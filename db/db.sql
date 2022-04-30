@@ -1,7 +1,3 @@
-create database LaTereDB;
-
-use LaTereDB;
-
 create table users (
 id int(11) not null auto_increment,
 name varchar(20) default null,

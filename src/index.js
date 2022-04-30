@@ -16,6 +16,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req,res) => {
+    res.send('Welcome to my API');
+});
 
 //Routes
 app.use(require('./routes/users'));
@@ -23,4 +26,4 @@ app.use(require('./routes/users'));
 //Starting the server
 app.listen(port, () => {
     console.log(`Server on port ${port}`);
-})
+});
