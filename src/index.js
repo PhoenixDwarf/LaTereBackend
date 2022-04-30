@@ -16,9 +16,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req,res) => {
-    res.send('Welcome to my API');
-});
+
 
 //Routes
 app.use(require('./routes/users'));
