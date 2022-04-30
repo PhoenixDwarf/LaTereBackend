@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 
 // Settings
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
+let port = process.env.PORT || 3000;
 
 // Middlewares
 app.use(express.json());
@@ -20,6 +21,6 @@ app.use((req, res, next) => {
 app.use(require('./routes/users'));
 
 //Starting the server
-app.listen(app.get('port'), () => {
-    console.log('Server on port ', app.get('port'));
+app.listen(port, () => {
+    console.log(`Server on port ${port}`);
 })
