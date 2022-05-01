@@ -53,7 +53,7 @@ function handleDisconnect() {
         }
     });
 }
-module.exports = handleDisconnect();
+handleDisconnect();
 
 
 /*
