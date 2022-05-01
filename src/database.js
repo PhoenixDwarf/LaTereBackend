@@ -46,7 +46,7 @@ function handleDisconnect() {
       }
     });
 }
-handleDisconnect();
+module.exports = handleDisconnect();
 
 
 /*
