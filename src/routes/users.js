@@ -2,8 +2,45 @@ const express = require('express');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const router = express.Router();
+const mysql = require('mysql');
 
-const mysqlConnection = require('../database');
+// Contection to the dataase //
+
+var mysqlConnection;
+var db_config = {
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database
+};
+
+function handleDisconnect() {
+
+    mysqlConnection = mysql.createConnection(db_config);
+
+
+    mysqlConnection.connect(function (err) {
+        if (err) {
+            console.log('error when connecting to db:', err);
+            setTimeout(handleDisconnect, 2000);
+        }
+    });
+
+    mysqlConnection.on('error', function (err) {
+        console.log('db error', err);
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            handleDisconnect();
+        } else {
+            throw err;
+        }
+    });
+}
+
+handleDisconnect();
+
+
+// end conection to the data base //
+// const mysqlConnection = require('../database');
 
 router.get('/', (req,res) => {
     res.send('Welcome to my API');
