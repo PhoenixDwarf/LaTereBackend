@@ -23,7 +23,7 @@ const mysqlConnection = mysql.createConnection({
     database: process.env.database
 })
 
-/*
+
 var connection;
 
 function handleDisconnect() {
@@ -45,10 +45,11 @@ function handleDisconnect() {
         throw err;                                              // server variable configures this)
       }
     });
-  }
-*/
+}
+handleDisconnect();
 
 
+/*
 mysqlConnection.connect(function (err){
     if(err){
         console.log(err);
@@ -60,4 +61,4 @@ mysqlConnection.connect(function (err){
 } );
 
 module.exports = mysqlConnection;
-
+*/
