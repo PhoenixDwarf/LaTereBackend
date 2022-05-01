@@ -23,6 +23,7 @@ const mysqlConnection = mysql.createConnection({
     database: process.env.database
 })
 
+/*
 var connection;
 
 function handleDisconnect() {
@@ -38,21 +39,20 @@ function handleDisconnect() {
                                                                 // If you're also serving http, display a 503 error.
     connection.on('error', function(err) {
       console.log('db error', err);
-      if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-        handleDisconnect();                         // lost due to either server restart, or a
-      } else {                                      // connnection idle timeout (the wait_timeout
-        throw err;                                  // server variable configures this)
+      if(err.code === 'PROTOCOL_CONNECTION_LOST') {             // Connection to the MySQL server is usually
+        handleDisconnect();                                     // lost due to either server restart, or a
+      } else {                                                  // connnection idle timeout (the wait_timeout
+        throw err;                                              // server variable configures this)
       }
     });
   }
+*/
 
 
-
-/*
 mysqlConnection.connect(function (err){
     if(err){
         console.log(err);
-        return;
+        setTimeout(mysqlConnection, 2000);
     } 
     else{
         console.log('DB is connected');
@@ -60,6 +60,4 @@ mysqlConnection.connect(function (err){
 } );
 
 module.exports = mysqlConnection;
-*/
 
-handleDisconnect();
