@@ -85,12 +85,12 @@ router.post('/asd6a5Adasd3SDG2FGER56sd2ds62/addUser', (req, res) => {
 })
 
 router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/updateUser:id', (req, res) => {
-    const { name, lastname, address, neighborhood, phone, email } = req.body;
+    const { name, lastname, address, neighborhood, phone, email, password } = req.body;
     const { id } = req.params;
     const query = `
-        CALL UserAddOrEdit (?,?,?,?,?,?,?,0,0)
+        CALL UserAddOrEdit (?,?,?,?,?,?,?,?,0,0)
     `;
-    mysqlConnection.query(query, [id, name, lastname, address, neighborhood, phone, email], (err, rows, fields) => {
+    mysqlConnection.query(query, [id, name, lastname, address, neighborhood, phone, email, password], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'User Updated' });
         }
