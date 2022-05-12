@@ -72,7 +72,7 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/searchID:id', (req, res) => {
 router.post('/asd6a5Adasd3SDG2FGER56sd2ds62/addUser', (req, res) => {
     const { name, lastname, address, neighborhood, phone, email, password } = req.body;
     const query = `
-        CALL UserAddOrEdit(0,?,?,?,?,?,?,?,0,NULL)
+        CALL UserAddOrEdit(0,?,?,?,?,?,?,?,0)
     `;
     mysqlConnection.query(query, [name, lastname, address, neighborhood, phone, email, password], (err, rows, fields) => {
         if (!err) {
@@ -88,7 +88,7 @@ router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/updateUser:id', (req, res) => {
     const { name, lastname, address, neighborhood, phone, email, password } = req.body;
     const { id } = req.params;
     const query = `
-        CALL UserAddOrEdit (?,?,?,?,?,?,?,?,0,0)
+        CALL UserAddOrEdit (?,?,?,?,?,?,?,?,0)
     `;
     mysqlConnection.query(query, [id, name, lastname, address, neighborhood, phone, email, password], (err, rows, fields) => {
         if (!err) {
