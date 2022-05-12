@@ -25,6 +25,7 @@ insert into users values
 (4, 'ADMIN','ADMIN','ADMIN','ADMIN',1111111111,'admin@admin.admin','123456789',true);
 
 alter table users add securityq varchar(80) default null;
+alter table users add securityqnumber int(10) default null;
 
 delete from users where id = 4;
 drop table users;
