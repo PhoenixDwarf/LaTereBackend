@@ -122,7 +122,7 @@ router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/changePass:id', (req, res) => {
     const { password } = req.body;
     const { id } = req.params;
     const query = `
-        CALL UpdateSecurityQuestion (?,?)
+        CALL UpdatePass (?,?)
     `;
     mysqlConnection.query(query, [id, password], (err, rows, fields) => {
         if (!err) {
