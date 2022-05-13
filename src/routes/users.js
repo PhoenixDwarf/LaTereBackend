@@ -118,6 +118,23 @@ router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/updateSecurityQuestion:id', (req, res
 
 })
 
+router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/changePass:id', (req, res) => {
+    const { newpass } = req.body;
+    const { id } = req.params;
+    const query = `
+        CALL UpdateSecurityQuestion (?,?)
+    `;
+    mysqlConnection.query(query, [id, newpass], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Password Updated' });
+        }
+        else {
+            console.log(err);
+        }
+    })
+
+})
+
 router.delete('/asd6a5Adasd3SDG2FGER56sd2ds62/deleteUser:id', (req, res) => {
     const { id } = req.params;
     mysqlConnection.query('DELETE FROM users WHERE id = ?', [id], (err, rows, fields) => {
