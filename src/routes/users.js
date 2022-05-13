@@ -119,12 +119,12 @@ router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/updateSecurityQuestion:id', (req, res
 })
 
 router.put('/asd6a5Adasd3SDG2FGER56sd2ds62/changePass:id', (req, res) => {
-    const { newpass } = req.body;
+    const { password } = req.body;
     const { id } = req.params;
     const query = `
         CALL UpdateSecurityQuestion (?,?)
     `;
-    mysqlConnection.query(query, [id, newpass], (err, rows, fields) => {
+    mysqlConnection.query(query, [id, password], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'Password Updated' });
         }
