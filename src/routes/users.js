@@ -180,7 +180,7 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/logUserByPhone/:phone/:password', (re
 router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/getSecurityQuestionByEmail/:email', (req, res) => {
     const { email } = req.params;
 
-    const query = ` SELECT securityqnumber, securityq FROM users where email = ? `;
+    const query = ` SELECT securityqnumber, securityq, id FROM users where email = ? `;
 
     mysqlConnection.query(query, [ email ], (err, rows, fields) => {
         if (!err) {
@@ -195,7 +195,7 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/getSecurityQuestionByEmail/:email', (
 router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/getSecurityQuestionByPhone/:phone', (req, res) => {
     const { phone } = req.params;
 
-    const query = ` SELECT securityqnumber, securityq FROM users where phone = ? `;
+    const query = ` SELECT securityqnumber, securityq, id FROM users where phone = ? `;
 
     mysqlConnection.query(query, [ phone ], (err, rows, fields) => {
         if (!err) {
