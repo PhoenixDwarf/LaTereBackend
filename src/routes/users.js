@@ -262,12 +262,21 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/ordersID:userPhone', (req, res) => {
 
 router.delete('/asd6a5Adasd3SDG2FGER56sd2ds62/deleteOrder:userPhone', (req, res) => {
     const { userPhone } = req.params;
-    const query = `
-        DELETE FROM orders WHERE userPhone = ? ; DELETE FROM products WHERE userPhone = ?
-    `;
-    mysqlConnection.query(query, [userPhone, userPhone], (err, rows, fields) => {
+    mysqlConnection.query('DELETE FROM orders WHERE userPhone = ?', [userPhone], (err, rows, fields) => {
         if (!err) {
             res.json({ Status: 'Order Deleted' })
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
+
+router.delete('/asd6a5Adasd3SDG2FGER56sd2ds62/deleteProducts:userPhone', (req, res) => {
+    const { userPhone } = req.params;
+    mysqlConnection.query('DELETE FROM products WHERE userPhone = ?', [userPhone], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Products Deleted' })
         }
         else {
             console.log(err);
