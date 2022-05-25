@@ -237,5 +237,39 @@ router.post('/asd6a5Adasd3SDG2FGER56sd2ds62/addProduct', (req, res) => {
     })
 })
 
+router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/orders', (req, res) => {
+    mysqlConnection.query('SELECT * FROM orders', (err, rows, fields) => {
+        if (!err) {
+            res.json(rows);
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
+
+router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/ordersID:userPhone', (req, res) => {
+    const { userPhone } = req.params;
+    mysqlConnection.query('SELECT * FROM orders WHERE userPhone = ?', [userPhone], (err, rows, fields) => {
+        if (!err) {
+            res.json(rows[0]);
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
+
+router.delete('/asd6a5Adasd3SDG2FGER56sd2ds62/deleteOrder:userPhone', (req, res) => {
+    const { userPhone } = req.params;
+    mysqlConnection.query('DELETE FROM orders WHERE userPhone = ? ; DELETE FROM products WHERE userPhone = ?', [userPhone,userPhone], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'User Deleted' })
+        }
+        else {
+            console.log(err);
+        }
+    })
+})
 
 module.exports = router;
