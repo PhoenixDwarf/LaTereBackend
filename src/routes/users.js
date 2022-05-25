@@ -207,8 +207,35 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/getSecurityQuestionByPhone/:phone', (
     })
 })
 
+router.post('/asd6a5Adasd3SDG2FGER56sd2ds62/addOrder', (req, res) => {
+    const { userPhone, userName, userLastname, userAddress, userNeighborhood, totalprice } = req.body;
+    const query = `
+        CALL new_order(?,?,?,?,?,?)
+    `;
+    mysqlConnection.query(query, [userPhone, userName, userLastname, userAddress, userNeighborhood, totalprice], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Order Saved' });
+        }
+        else {
+            res.status(400).json(err);
+        }
+    })
+})
 
-
+router.post('/asd6a5Adasd3SDG2FGER56sd2ds62/addProduct', (req, res) => {
+    const { name, price, options, userPhone} = req.body;
+    const query = `
+        CALL new_product(?,?,?,?,?,?)
+    `;
+    mysqlConnection.query(query, [name, price, options[0], options[1], options[2], userPhone], (err, rows, fields) => {
+        if (!err) {
+            res.json({ Status: 'Product Saved' });
+        }
+        else {
+            res.status(400).json(err);
+        }
+    })
+})
 
 
 module.exports = router;
