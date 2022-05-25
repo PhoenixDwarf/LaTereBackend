@@ -276,7 +276,7 @@ router.get('/asd6a5Adasd3SDG2FGER56sd2ds62/productsID:userPhone', (req, res) => 
     const { userPhone } = req.params;
     mysqlConnection.query('SELECT * FROM products WHERE userPhone = ?', [userPhone], (err, rows, fields) => {
         if (!err) {
-            res.json(rows[0]);
+            res.json(rows);
         }
         else {
             console.log(err);
